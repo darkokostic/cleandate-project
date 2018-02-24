@@ -1,0 +1,122 @@
+<div id="wrapper">
+    <input type="hidden" id="baseUrl" class="baseUrl" value="/itsadmin/index.php">
+    <div class="content-page" >
+        <div class="content">
+            <div class="">
+                <div class="page-header-title">
+                    <h4 class="page-title">Dashboard</h4>
+                </div>
+            </div>
+            <div class="page-content-wrapper ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="panel text-center">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title text-muted font-light">Total Members</h4>
+                                </div>
+                                <div class="panel-body p-t-10">
+                                    <h2 class="m-t-0 m-b-15"><img style="height: 25px; padding-right: 10px; margin-bottom: 5px;" src="images/slika1.png"><b>{{dashboardStatistic.totalUsers}}</b></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="panel text-center">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title text-muted font-light">Last 1 Month Join Users</h4>
+                                </div>
+                                <div class="panel-body p-t-10">
+                                    <h2 class="m-t-0 m-b-15"><img style="height: 25px; padding-right: 10px; margin-bottom: 5px;" src="images/slika2.png"><b>{{dashboardStatistic.lastMonth}}</b></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="panel text-center">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title text-muted font-light">Verified Users</h4>
+                                </div>
+                                <div class="panel-body p-t-10">
+                                    <h2 class="m-t-0 m-b-15"><img style="height: 25px; padding-right: 10px; margin-bottom: 5px;" src="images/slika3.png"><b>{{dashboardStatistic.verified}}</b></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="panel text-center">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title text-muted font-light">Pending Requests</h4>
+                                </div>
+                                <div class="panel-body p-t-10">
+                                    <h2 class="m-t-0 m-b-15"><img style="height: 25px; padding-right: 10px; margin-bottom: 5px;" src="images/slika4.png"><b>{{dashboardStatistic.pennding}}</b></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <form name="myForm">
+                                    <h4 class="m-t-0">Join Members
+                                        <select name="singleSelect" id="singleSelect" ng-model="singleSelect" ng-change="statisticByYears(singleSelect)">
+                                            <option ng-value="2017">2017</option>
+                                            <option ng-value="2018">2018</option>
+                                            <option ng-value="2019">2019</option>
+                                            <option ng-value="2020">2020</option>
+                                            <option ng-value="2021">2021</option>
+                                            <option ng-value="2022">2022</option>
+                                            <option ng-value="2023">2023</option>
+                                            <option ng-value="2024">2024</option>
+                                            <option ng-value="2025">2025</option>
+                                            <option ng-value="2026">2026</option>
+                                            <option ng-value="2027">2027</option>
+                                        </select>
+                                    </h4>
+                                </form>
+                                <div class="rep" ng-repeat="month in monthStatistic">
+                                    <p class="font-600">{{month.month}}<span class="text-primary pull-right"><b>{{month.size}}</b></span></p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-primary " role="progressbar" aria-valuenow="{{month.size}}%" aria-valuemin="0" aria-valuemax="500" style="width: {{month.size;}}%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <h4 class="m-t-0">Pending Requests for Varification</h4>
+                                <div style="overflow: auto;">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>First Name</th>
+                                                <th>Display Name</th>
+                                                <th>Status</th>
+                                                <th>Status</th>
+                                                <th>Document</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody ng-repeat="user in dashboardVerification track by $index">
+                                            <tr>
+                                                <td>{{user.id}}</td>
+                                                <td>{{user.user.vFirstName}}</td>
+                                                <td>{{user.user.vFullname}}</td>
+                                                <td>
+                                                    <a href="" class="btn btn-success btn-sm" ng-click="makeUserVerify(user.id,$index)">Make Varify</a>
+                                                </td>
+                                                <td>
+                                                    <a href="" class="btn btn-primary btn-sm" ng-click="makeUserDenied(user.id,$index)">Denied</a>
+                                                </td>
+                                                <td><a ng-href="/{{user.image}}" target="_blank">Document</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

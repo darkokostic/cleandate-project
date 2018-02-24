@@ -1,0 +1,205 @@
+    <section class="section-height">
+        <div class="profile_top">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="profile-main clearfix">
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="profileDiv text-center">
+                            <img ng-src="{{user.tImage}}" class="my-profile" alt="">
+                            <div class="chenge-pic edit-chang change-profile-pic">
+                                <!-- <span class="btn"><input type="file">Change Profile Picture</span> -->
+                                <button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+                          accept="image/*"  ngf-max-size="10MB">
+                      Select File</button>
+
+                  {{errorMsg}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-8 col-md-9">
+                        <div class="pro-edit-sec clearfix">
+                            <div class="edit-title clearfix">
+                                <h1>{{user.vFullname}}</h1>
+                            </div>
+                            <div class="Profile-divsub user_info">
+                                <span>{{user.age}}</span><span class="sub-point">{{user.eGender}}</span>
+                                <span class="sub-point">{{user.city}},{{user.country}}</span>
+                                <a class="edit-btn" data-toggle="modal" data-target="#myModal-edit" style="cursor:pointer" >edit info</a>
+                            </div>
+                            <div class="verify-profile clearfix" ng-if="user.isVerifiedByAdmin=='Yes'">
+                                <a href="#" class="verify-clean"><img src="images/icons/right-check.png" alt="check" />Verified Clean</a>
+                                <span class="date-pledge">{{user.dVerifiedDateTime | date:'yyyy-MM-dd' }}</span>
+                            </div>
+                            <div class="verify-profile clearfix" ng-if="user.isVerifiedByAdmin=='No'">
+                                <a href="#" class="verify-clean"><img src="images/icons/right-check.png" alt="check" />Verified Clean</a>
+                                <span class="date-pledge"></span>
+                            </div>
+                            <!--- 22-3-2017 Changes ---->
+                            <div class="pro-sub-lable">
+                                <div class="lable-one">
+                                    <span>LAST ACTIVITY</span>
+                                    <label>{{user.dUpdatedDateTime | date:'yyyy-MM-dd'}}</label>
+                                </div>
+                                <div class="lable-one _MRL_">
+                                    <span>MEMEBER SINCE</span>
+                                    <label>{{user.dAddedDateTime | date:'yyyy-MM-dd'}}</label>
+                                </div>
+                                <div class="lable-one">
+                                    <span>RECENT LOCATION</span>
+                                    <label>{{user.city}},{{user.country}}</label>
+                                </div>
+                            </div>
+                            <!--- 22-3-2017 Changes ---->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="user_profile_bottom">
+            <div class="container">
+                <div class="row clearfix ">
+                    <div class="col-sm-4 col-md-4">
+                        <h1 class="user-info-title">{{closestMember.vFirstName}}’s Info</h1>
+                        <div class="data-row-profile">
+                            <label>Name</label>
+                            <span>{{closestMember.vFirstName}} {{closestMember.vLastName}}</span> </div>
+                        <div class="data-row-profile">
+                            <label>Mles Away</label>
+                            <span>{{closestMember.distance | limitTo : 5}} miles</span> </div>
+                        <div class="data-row-profile">
+                            <label>Age</label>
+                            <span>{{closestMember.age}}</span> </div>
+                        <div class="data-row-profile">
+                            <label>Interested In</label>
+                            <span>{{closestMember.eShowMe}}</span> </div>
+                        <div class="data-row-profile">
+                            <label>City</label>
+                            <span>{{closestMember.city}}</span> </div>
+                    </div>
+                    <div class="col-sm-8 col-md-8 user-images">
+                        <div class=" clearfix">
+                            <h1 class="user-info-title">Public Photos</h1>
+                            <div class="bg_white clearfix">
+                                <div class="inner-row">
+                                    <div class="col-xs-6 col-sm-3 col-md-3 ">
+                                        <a class="example-image-link" href="http:images/home-assets/pro-1.png" data-lightbox="example-1"><img src="{{closestMember.tImage}}" alt="image"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about-me-profile clearfix">
+                            <h1 class="user-info-title">About Me</h1>
+                            <p ng-if="user.tAbout!=null">
+                                {{user.tAbout}}
+                            </p>
+                            <p ng-if="user.tAbout==null">
+                                No information
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade model-bg in" id="myModal-edit" role="dialog" >
+            <div class="modal-dialog edit-dialog">
+                <div class="modal-content model-bg">
+                    <div class="modal-header b-none">
+                        <img class="conatct-closepop" src="images/home-assets/close.png" alt="icon" data-dismiss="modal">
+                    </div>
+                    <div class="modal-body model-contact _PRL0_ clearfix">
+                        <div class="editDiv clearfix">
+                            <form class="" method="POST" name="myForm">
+                                <div class="clearfix">
+                                    <div class="col-sm-3">
+                                        <div class="profileDivpop">
+                                            <img ng-src="{{user.tImage}}" class="my-profile" alt="">
+                                            <div class="chenge-pic edit-chang change-profile-pic">
+                                <button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+                          accept="image/*"  ngf-max-size="10MB">
+                      Select File</button>
+                  <br><br>
+                  File:
+                  <div style="font:smaller">{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+                  </div>     
+                  {{errorMsg}}
+                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-9 _PR0_">
+                                        <div class="edit-form-left clearfix">
+                                            <div class="form-group">
+                                                <label for="name">name</label>
+                                                <input type="text" class="form-control" name="NAME" ng-model="user.vFullname" value="user.vFullname" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="age">age</label>
+                                                <input type="number" class="form-control" name="AGE" value="{{user.age}}" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="gender">sex</label>
+                                                <span>
+                                  <select class="gender-drop" name="GENDER" ng-model="user.eGender" required>
+                                            <option value="user.eGender">-</option>
+                                        <option value="Male" ng-selected="user.eGender=='Male'">Male</option>
+                                          <option value="Female" ng-selected="user.eGender=='Female'">Female</option>
+                                  </select>
+                              </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-full-input">
+                                    <div class="form-group">
+                                        <label for="intrested">Interested In</label>
+                                        <span>
+                                  <select class="gender-drop" name="INTRESTED_IN" ng-model="user.eShowMe" required>
+                                    <option value="">-</option>
+                                    <option value="WOMEN" ng-selected="user.eShowMe=='Women'" >Women</option>
+                                    <option value="MEN" ng-selected="user.eShowMe=='Men'" >Men</option>
+                                    <option value="BOTH" ng-selected="user.eShowMe=='Both'">Both</option>
+                                  </select>
+                                  </span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="age">about me</label>
+                                        <input type="text" class="form-control" name="ABOUT_ME" ng-model="user.tAbout" value="user.tAbout" required>
+                                    </div>
+                                    <!--<div class="form-group">-->
+                                        <!--<label for="age">Status</label>-->
+                                        <!--<input type="text" class="form-control" name="DISPLAY_STATUS" value="" placeholder="Type your word..." required>-->
+                                    <!--</div>-->
+                                    <div class="form-group">
+                                        <label for="age">Occupation</label>
+                                        <input type="text" class="form-control" name="OCCUPATION" ng-model="user.tSelectedWork" value="user.tSelectedWork" required>
+                                    </div>
+                                    <div class="Interested-up clearfix">
+                                        <div class="inside-up">
+                                            <h1>photos</h1>
+                                            <div class="edit-upImg">
+                                                <a href="#" class="addPlus">
+                                                    <span class="editAddImages">
+                                                        <button type="file" ngf-select="uploadImagesFiles($file, $invalidFiles)"
+                                                              accept="image/*"  ngf-max-size="10MB">
+                                                          Select File</button>
+                                                      <br><br>
+                                                      File:
+                                                      <div style="font:smaller">{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+                                                      </div>     
+                                                      {{errorMsg}}
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="Send-btn text-center">
+                                    <button type="submit" class=" btn-submit-popup btn-edit" ng-click="SaveUpdateUser(user)" ng-disabled="myForm.$invalid">save</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

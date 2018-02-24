@@ -1,0 +1,61 @@
+<div class="content-page" >
+	<div class="content">
+		<div class="">
+	  		<div class="page-header-title">
+	    		<h4 class="page-title">Manage Admin </h4>
+	  		</div>
+		</div>
+		<div class="page-content-wrapper ">
+			<div class="container">
+				<div class="row">
+	  				<div class="col-sm-12">
+	    				<div class="panel panel-primary">
+	      					<div class="panel-body">
+		        				<h4 class="m-t-0 m-b-30">Add Admin</h4>
+		        				<form class="form-horizontal" name="myForm">
+		        					<div class="form-group">
+		        						<label class="col-md-2 control-label required">
+		        							Name<span class="required">*</span>
+		        						</label>
+		        						<div class="col-md-10">
+		        							<input class="form-control" name="Admin" ng-model="admin.name" type="text" maxlength="255" required>
+		        						</div>
+		        					</div>
+							        <div class="form-group">
+							        	<label class="col-md-2 control-label required">
+							        		Last name <span class="required">*</span>
+							        	</label>
+							        	<div class="col-md-10">
+							        		<input class="form-control" name="Admin" ng-model="admin.userName" type="text" maxlength="255" required>
+							        	</div>
+							        </div>
+							        <div class="form-group">
+							        	<label class="col-md-2 control-label required">
+							        		Password <span class="required">*</span>
+							        	</label>
+							        	<div class="col-md-10">
+							        		<input class="form-control" name="Admin" ng-model="admin.password" type="password" maxlength="255" required>
+							        	</div>
+							        </div>
+							        <div class="form-group">
+							        	<label class="col-md-2 control-label required">
+							        		Email <span class="required">*</span>
+							        	</label>
+							        	<div class="col-md-10">
+							        		<input class="form-control" name="Admin" ng-model="admin.email" type="email" maxlength="255" required>
+							        	</div>
+							        </div>
+							        <div class="form-group m-b-0">
+							          	<div class="col-sm-offset-2 col-sm-9">
+							          		<input ng-disabled="myForm.$invalid" class="btn btn-info" type="submit" name="yt0" value="Create" ng-click="createNewAdmin(admin)">
+							          	</div>
+							        </div>
+							    </form>      
+							</div>
+		    			</div>
+		  			</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

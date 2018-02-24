@@ -1,0 +1,72 @@
+<div class="tab-pane sub-data active newest-members-page" id="home1">
+    <div class="container">
+        <ul class="nav nav-tabs _TABS_">
+            <li class="second-meni-user active" ng-click="goToNewestMembers()">
+                <a data-toggle="tab" aria-expanded="true">
+                    <span class="tab-span">NEWEST MEMBERS</span>
+                </a>
+            </li>
+            <li class="second-meni-user" ng-click="goToCleanVerified()">
+                <a data-toggle="tab" aria-expanded="true">
+                    <span class="tab-span">CLEAN VERIFIED</span>
+                </a>
+            </li>
+            <li class="second-meni-user" ng-click="goToFeaturedMembers()">
+                <a data-toggle="tab" aria-expanded="true">
+                    <span class="tab-span">FEATURED MEMBERS</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="container" ng-if="activeNewestMemberTab">
+        <div class="tab-content">
+            <div class="tab-pane active">
+                <div class="clearfix row" >
+                    <div class="col-sm-3 col-xs-3  clearfix" ng-repeat="newestMember in newestMembers">
+                        <a class="profile-block" href="" ng-click="viewSingleUser(newestMember.iUserID)">
+                            <span class="member-img-holder">
+                                <img ng-src="{{newestMember.tImage}}" class="lazy-loaded" alt="">
+                            </span>
+                            <h3>{{newestMember.vFirstName}}</h3>
+                            <h5></h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" ng-if="activeCleanVerifiedTab">
+        <div class="tab-content">
+            <div class="tab-pane active">
+                <div class="clearfix row">
+                    <div class="col-sm-3 col-xs-3 clearfix" ng-repeat="cleanVerifiedMember in cleanVerifiedMembers">
+                        <a class="profile-block" href="" ng-click="viewSingleUser(cleanVerifiedMember.iUserID)">
+                            <span class="member-img-holder">
+                                <img ng-src="{{cleanVerifiedMember.tImage}}" class="lazy-loaded" alt="">
+                            </span>
+                            <h3>{{cleanVerifiedMember.vFirstName}}</h3>
+                            <h5></h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" ng-if="activeFeaturedMembersTab">
+        <div class="tab-content">
+            <div class="tab-pane active">
+                <div class="clearfix row">
+                    <div class="col-sm-3 col-xs-3 clearfix" ng-repeat="featuredMember in featuredMembers">
+                        <a class="profile-block" ng-click="viewSingleUser(featuredMember.iUserID)">
+                            <span class="member-img-holder">
+                                <img ng-src="{{featuredMember.tImage}}" class="lazy-loaded" alt="">
+                            </span>
+                            <h3>{{featuredMember.vFirstName}}</h3>
+                            <h5></h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

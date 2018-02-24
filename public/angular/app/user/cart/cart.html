@@ -1,0 +1,60 @@
+<section class="section-height" ng-init="verification()">
+    <div class="profile_top">
+
+    </div>
+    <div class="cart-holder" ng-if="showCart">
+    	<div class="container clearfix">
+    		<div class="card-head">
+        		<h1> Your Cart</h1>
+        		<p>Get your results in <span>2 - 3 days</span>, then choose to upload your results to your profile</p>
+        	</div>
+            <div class="main-cart-content">
+                <div class="main-cart">
+            		<div class="col-md-offset-2 col-sm-8 sect1 clearfix">
+                		<img src="/images/home-assets/kit-verify.png">
+                    	<p>(1) <span>CleanData Collection kit</span></p>
+                    </div>
+                    <div class=" col-sm-4 price">
+                    	<h4>$139.00</h4>
+                    	<a href="#">Remove</a>
+                    </div>
+       		    </div>
+                <hr size="30">
+                <div class="sect2 clearfix">
+                 	<div class="mainsect2">
+                    	<div class="clearfix">
+                    		<label class="subtotal">subtotal</label>
+                    		<span>$139.00</span>
+                    	</div>
+                    	<div class="clearfix">
+                    		<label class="ship">Shipping</label>
+                    		<h4><span>free</span></h4>
+                    	</div>
+                    	<div class=" tax clearfix ">
+                    		<label class="taxes">taxes</label>
+                    		<span>included</span>
+                    	</div>
+                        <hr class="foot-hr"size="20">
+                        <div class=" total clearfix ">
+                        	<label class="total-p">total</label>
+                        	<span>$139.00</span>
+                        </div>
+                        <a  href="/#!/user/checkout1" class="join-free-btn checkout" >Checkout</a>
+                    </div>
+                </div>
+            </div>
+            <p class="sect-foot">Already been tested? <span>Click here to upload your results to your profile</span></p>
+        </div>
+    </div>
+    <div ng-if="haveVerification">
+        <center>
+            <h1 class="verify-text" style="text-align='center'">You are alredy verify</h1>
+        </center>
+    </div>
+	<div ng-if="userOrderCheck">
+		<center>
+			<h1 class="verify-text" style="text-align='center'">You alredy orderd</h1>
+		</center>
+	</div>
+</section>
+                    

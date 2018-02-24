@@ -1,0 +1,295 @@
+
+<div >
+<section class="setting-all-tab outer-height">
+    <div class="container">
+        <div class="row">
+            <div class="setting-sec clearfix">
+                <div class="col-md-4">
+                    <div class="tab-menu j-height left-pannel-setting" style="height: 494px;">
+                        <div class="tab-title">
+                            <h1><img src="images/home-assets/setting.png" class="faq-icon" alt="logo">Settings</h1>
+                        </div>
+                        <nav class="nav-sidebar">
+                            <ul class="nav nav-tabs nav-faq setting-list hidden-xs">
+                                <li class="second-meni-user nav active" ng-click="goToDiscoveryPreference()">
+                                    <a data-toggle="tab" aria-expanded="true">DISCOVERY PREFERENCE</a>
+                                </li>
+                                <!--<li class="second-meni-user nav" ng-click="goToWebProfile()">-->
+                                    <!--<a data-toggle="tab" aria-expanded="false">WEB PROFILE</a>-->
+                                <!--</li>-->
+                                <li class="second-meni-user nav" ng-click="goToNotification()">
+                                    <a data-toggle="tab">NOTIFICATION</a>
+                                </li>
+                                <li class="second-meni-user nav" ng-click="goToAppSetting()">
+                                    <a data-toggle="tab">APP SETTING</a>
+                                </li>
+                                <li class="second-meni-user nav" ng-click="goToVerifyYourStatus()">
+                                    <a data-toggle="tab" aria-expanded="true">VERIFY YOUR STATUS</a>
+                                </li>
+                            </ul>
+                            <div class="panel-group visible-xs" id="9y5rf-accordion"></div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-md-8" ng-show="activeDiscoveryPreference">
+                    <div class="tab-content tab-content-setting cleafix">
+                        <div class="tab-pane fade active in">
+                            <h4>DISCOVERY PREFERENCE</h4>
+                            <div class="notifi-setting clearfix">
+                                <ul>
+                                    <li>
+                                        <span class="setting-lable">Maximum Distance</span>
+                                        <div class="rang-main-holder">
+                                        <div>
+                                            <rzslider rz-slider-model="user.iRadius" ng-model="user.iRadius" rz-slider-options="slider.options"></rzslider>
+                                        </div>
+
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="setting-lable">Gender</span>
+                                        <div class="setting-list-data">
+                                            <div class="gender-holder">
+                                                <label for="women">Only Women</label>
+                                                <span class="radio-holder">
+                                                <input ng-checked="user.eShowMe=='Women'" ng-model="user.eShowMe" type="radio" class="filter_gender" id="women" name="gender" value="Female">
+                                                <div class="effect"></div></span>
+                                            </div>
+                                            <div class="gender-holder">
+                                                <label for="men">Only Men</label>
+                                                <span class="radio-holder"><input ng-checked="user.eShowMe=='Men'" ng-model="user.eShowMe" type="radio" class="filter_gender" id="men" name="gender" value="Male"><div class="effect"></div></span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="setting-lable">Age Range</span>
+                                        <div class="rang-main-holder">
+                                        <rzslider rz-slider-model="minRangeSlider.minValue" rz-slider-high="minRangeSlider.maxValue" rz-slider-options="minRangeSlider.options"></rzslider>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="setting-lable">Discover Me</span>
+                                        <div class="material-switch pull-right">
+                                            <label class="switch1">
+                                                <input type="checkbox" ng-checked="user.eDiscoverMe" ng-model="user.eDiscoverMe" ng-value="user.eDiscoverMe">
+                                                <div class="slider1 round"></div>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="setting-lable">Profile</span>
+                                        <div class="setting-list-data">
+                                            <div class="gender-holder">
+                                                <label for="women">Verify Clean</label>
+                                                <span class="radio-holder">
+                                                <input ng-checked="user.eShowVerifiedUserType == 'Clean'" ng-model="user.eShowVerifiedUserType" type="radio" class="filter_gender" id="verify-clean" name="profile" value="Clean">
+                                                <div class="effect"></div></span>
+                                            </div>
+                                            <div class="gender-holder">
+                                                <label for="men">All</label>
+                                                <span class="radio-holder">
+                                                <input ng-checked="user.eShowVerifiedUserType == 'All'" ng-model="user.eShowVerifiedUserType" type="radio" class="filter_gender" id="all" name="profile" value="All">
+                                                <div class="effect"></div></span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="confirmBtn text-center">
+                                <button class="confirm-btn" ng-click="SaveUpdateUserSettings(user)">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8" ng-if="activeWebProfile">
+                    <div class="tab-content tab-content-setting cleafix">
+                        <div class="tab-pane fade active in">
+                            <h4>WEB PROFILE</h4>
+                            <p>Create a public username.Share your username. Have people from all over the world swipe on you on Apex </p>
+                            <form class="display-form" id="d-form">
+                                <div class="search-bar-setting">
+                                    <div id="search" class="cleafix">
+                                        <input type="text" placeholder="apex.com/@" name="DISPLAY_NAME" value="" required maxlength="20">
+                                        <span>20</span>
+                                    </div>
+                                </div>
+                                <div class="confirmBtn text-center">
+                                    <button class="confirm-btn" type="submit">confirm</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8" ng-if="activeNotification">
+                    <div class="tab-content tab-content-setting cleafix">
+                        <div class="tab-pane fade active in">
+                            <form class="set-seting-notification">
+                                <h4>NOTIFICATION</h4>
+                                <div class="notifi-setting clearfix">
+                                    <ul>
+                                        <li>
+                                            <span class="setting-lable">New Match</span>
+                                            <div class="material-switch pull-right">
+                                                <label class="switch1">
+                                                    <input ng-checked="user.eNewMatchNotification" ng-model="user.eNewMatchNotification" type="checkbox">
+                                                    <div class="slider1 round"></div>
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="setting-lable">Message</span>
+                                            <div class="material-switch pull-right">
+                                                <label class="switch1">
+                                                    <input ng-checked="user.eMessageNotification" ng-model="user.eMessageNotification" type="checkbox">
+                                                    <div class="slider1 round"></div>
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="setting-lable">Message Likes</span>
+                                            <div class="material-switch pull-right">
+                                                <label class="switch1">
+                                                    <input ng-checked="user.eMessageLikesNotification" ng-model="user.eMessageLikesNotification" type="checkbox">
+                                                    <div class="slider1 round"></div>
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="setting-lable">Super Likes</span>
+                                            <div class="material-switch pull-right">
+                                                <label class="switch1">
+                                                    <input ng-checked="user.eSuperLikesNotification" ng-model="user.eSuperLikesNotification" type="checkbox">
+                                                    <div class="slider1 round"></div>
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li>
+
+                                    </ul>
+                                </div>
+                                <div class="saveBtn text-center ">
+                                    <button ng-click="SaveUpdateUserNotifications(user)" class="save-btn">save</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8" ng-if="activeAppSetting">
+                        <div class="tab-content tab-content-setting cleafix">
+                            <div class="tab-pane fade active in">
+                                <h4>APP SETTING</h4>
+                                <div class="app-setting clearfix">
+                                    <ul>
+                                        <li style="border-bottom:2px solid #ebeaea;">
+                                            <a href="" data-toggle="modal" data-target="#myModal-contact">
+                                                <span class="setting-lable">contact us</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/#!/policy"><span class="setting-lable">privacy policy</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="/#!/user/licences"><span class="setting-lable">license</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="saveBtn text-right">
+                                    <a href="" class="delete-btn" ng-click="deleteYourAcc()">delete account</a>
+                                </div>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8" ng-if="activeVerifyYourIdentity">
+                    <div ng-if="hasOrderd" class="tab-content tab-content-setting cleafix">
+                        <div class="tab-pane fade active in">
+                            <h4>VERIFY YOUR IDENTITY</h4>
+                            <div class="trytoupload">
+                                <div class="vi-text vrify_result_sent hide"><img src="images/icons/right-check-bnd-color.png" class="check_bnd_color" />
+                                    <p>You sent your results to verify your profile.
+                                        <br>We will let you know asap!</p>
+                                </div>
+                                <p class="vi-text verify_new_text">
+                                    Verify your identity to access to exclusive features. Just order the test kit.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="!hasOrderd" class="tab-content tab-content-setting cleafix">
+                        <div class="tab-pane fade active in">
+                            <h4>VERIFY YOUR IDENTITY</h4>
+                            <div class="trytoupload">
+                                <div class="vi-text vrify_result_sent hide"><img src="images/icons/right-check-bnd-color.png" class="check_bnd_color" />
+                                    <p>You sent your results to verify your profile.
+                                        <br>We will let you know asap!</p>
+                                </div>
+                                <p class="vi-text verify_new_text">
+                                    Verify your identity to access to exclusive features. Just upload your identity card.
+                                </p>
+                                <button type="file" ngf-select="uploadVerifyFiles($file, $invalidFiles)"
+                                          accept="image/*"  ngf-max-size="10MB">
+                                      Select File</button>
+                                  <br><br>
+                                  File:
+                                  <div style="font:smaller">{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+                                  </div>     
+                                  {{errorMsg}}
+                            </div>
+                            <div class="trytoupload-step2 hide">
+                                <div class="verify-profile clearfix">
+                                    <div class="pledge-main">
+                                        <a href="#" class="verify-clean">
+                                            <img src="images/icons/right-check.png" alt="check">Verified Clean
+                                        </a>
+                                        <span class="date-pledge">11/8/2017</span></div>
+                                    <a href="#" class="pledge pull-right">Updates Results</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    </div>
+<!-- MODAL -->
+<div id="myModal-contact" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body model-contact clearfix">
+                <h1 class="modal-title">Contact us</h1>
+                <div class="col-sm-5 text-popu">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                </div>
+                <div class="col-sm-7">
+                    <form class="contact-form form" novalidate="novalidate">
+                        <div class="form-group">
+                            <div class="icon-addon addon-lg icon-rl">
+                                <img class="conatct-form" src="images/home-assets/user-icon.png" alt="icon">
+                                <input required="" ng-model="contactUs.name" type="text" placeholder="Name" class="form-control" name="name" id="name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="icon-addon addon-lg icon-rl">
+                                <img class="conatct-form" src="images/home-assets/email.png" alt="icon">
+                                <input required="" ng-model="contactUs.email" type="text" placeholder="Email" class="form-control" name="email" id="email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="icon-addon addon-lg icon-textarea">
+                                <textarea required="" ng-model="contactUs.description" class="form-control" id="msg" placeholder="Your message" name="message" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="Send-btn text-right">
+                            <button class=" btn-submit-popup send-contact" ng-click="sendMail(contactUs)">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

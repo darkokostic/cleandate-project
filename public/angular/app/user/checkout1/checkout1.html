@@ -1,0 +1,172 @@
+
+<section class="section-height">
+    <div class="profile_top">
+    </div>
+    <div class="container container-main" ng-init="getUserId()">
+        <h1>Checkout</h1>
+        <div class="checkout1 ">
+            <form class="checkout1-form" id="checkout1" name="myForm" >
+                <div class="form-group col-each clearfix">
+                    <div class="col-sm-6 first-col">
+                        <label>First Name</label>
+                        <br>
+                        <input type="text" name="ORD_FNAME" ng-model="checkout.name" class="form-control fname" required/>
+                        <div>
+                            <p class="error" ng-if="!checkout.name">Required</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Last Name</label>
+                        <br>
+                        <input type="text" name="ORD_LNAME" class="form-control lname" ng-model="checkout.lastname" required/>
+                        <div>
+                            <p class="error" ng-if="!checkout.lastname">Required</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-each col-sm-12">
+                    <label>Email</label>
+                    <br>
+                    <input type="email" name="ORD_EMAIL" class="form-control" ng-model="checkout.email" required/>
+                    <div>
+                        <p class="error" ng-if="!checkout.email">Required</p>
+                    </div>
+                </div>
+                <div class="form-group col-each  col-sm-12">
+                    <label>Address </label>
+                    <br>
+                    <input type="text" name="ORD_ADDRESS" class="form-control" ng-model="checkout.address" required/>
+                    <div>
+                        <p class="error" ng-if="!checkout.address">Required</p>
+                    </div>
+                </div>
+                <div class="form-group col-each  col-sm-12">
+                    <label>State </label>
+                    <br>
+                    <input type="text" name="ORD_STATE" class="form-control" ng-model="checkout.state" required/>
+                    <div>
+                        <p class="error" ng-if="!checkout.state">Required</p>
+                    </div>
+                </div>
+                <div class="form-group col-each col-sm-12">
+                    <label>City </label>
+                    <br>
+                    <input type="text" name="ORD_CITY" required class="form-control" ng-model="checkout.city" />
+                    <div>
+                        <p class="error" ng-if="!checkout.city">Required</p>
+                    </div>
+                </div>
+                <div class="form-group col-each  clearfix">
+                    <div class="col-sm-6 first-col">
+                        <label>Zip Code</label>
+                        <br>
+                        <input type="number" name="ORD_ZIP" class="form-control zip" ng-model="checkout.zip" required/>
+                        <div>
+                            <p class="error" ng-if="!checkout.zip">Required</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Gender</label>
+                        <br>
+                        <select class="form-control gender" name="ORD_GENDER" ng-model="checkout.gender" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                        <div>
+                            <p class="error" ng-if="!checkout.gender">Required</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-each  clearfix">
+                    <div class="col-sm-6 first-col">
+                        <label>Date of Birth</label>
+                        <br>
+                        <input type="date" name="expdate" placeholder="MM/YY" ng-model="checkout.birth" required id="dp2" value="01/01/1980" class="form-control expdate" />
+                        <!-- <input type="text" name="ORD_DOB" class="form-control dob " ng-model="checkout.birth" required id="dp1" value="01/01/1980" /> -->
+                        <div>
+                            <p class="error" ng-if="!checkout.birth">Required</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Phone</label>
+                        <br>
+                        <input type="text" name="ORD_PHONE" placeholder="+(_ _ _) _ _ _-_ _ _ _" class="form-control phone" ng-model="checkout.phone" required mask="+(999) 999-9999"/>
+                        <div>
+                            <p class="error" ng-if="!checkout.phone">Required</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-sm-12">
+                    <div class="form-group">
+                        <p id="notes"> + Use a different address for shipping</p>
+                        <label>Order Notes</label>
+                        <textarea class="form-control" name="ORD_BILL_NOTE" ng-model="checkout.notes" rows="6" required></textarea>
+                        <div>
+                            <p class="error" ng-if="!checkout.notes">Required</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <p id="orders">Your Order</p>
+                    <div class="your-order">
+                        <div class="order-one">
+                            <div class="order-cell text">
+                                <label>Product</label>
+                            </div>
+                            <div class="order-cell">
+                                <label>Total</label>
+                            </div>
+                        </div>
+                        <div class="order-one">
+                            <div class="order-cell text kit">
+                                CleanDate Collection Kit (x1)
+                            </div>
+                            <div class="order-cell">
+                                $139.00
+                            </div>
+                        </div>
+                        <div class="order-one">
+                            <div class="order-cell text">
+                                <label>Subtotal</label>
+                            </div>
+                            <div class="order-cell">
+                                $139.00
+                            </div>
+                        </div>
+                        <div class="order-one">
+                            <div class="order-cell text">
+                                <label>Shipping</label>
+                            </div>
+                            <div class="order-cell">
+                                free
+                            </div>
+                        </div>
+                        <div class="order-one chekcout2-total">
+                            <div class="order-cell text ">
+                                <label>Total</label>
+                            </div>
+                            <div class="order-cell">
+                                $139.00
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12 card-img">
+                    <label>Credit Cards</label>
+                    <a href=""> <img src="images/home-assets/visa.png"></a>
+                    <a href=""> <img src="images/home-assets/mastor.png"></a>
+                    <a href=""><img src="images/home-assets/west.png"></a>
+                    <a href=""><img src="images/home-assets/check.png"></a>
+                    <a href=""><img src="images/home-assets/jcn.png"></a>
+                    <a href=""><img src="images/home-assets/cd.png"></a>
+                </div>
+
+                <hr>
+                <div class="next-btn">
+                    <button  class="join-free-btn checkout1-btn"  ng-click="sendChackoutData(checkout)" ng-disabled="myForm.$invalid">Send</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>

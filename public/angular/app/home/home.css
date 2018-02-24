@@ -1,0 +1,36 @@
+/* app css stylesheet */
+/***********My profile***********/
+/*.user_info{margin:10px 0 40px 0; }
+.user_info .sub-point{    margin-left: 25px;}	
+.user_info .sub-point:before{    top: 7px;}
+.user_profile_bottom{background-color:#f9f9f9;padding:60px 0;}
+.bg_white{background-color:#FFF;padding:15px;}
+.face-title {
+    color: #3b5998;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 5px 0;
+	display:block;
+}
+
+@media screen and (max-width: 991px) {
+.header-title { padding: 110px 0 40px; }
+.jcrop-hldr { overflow: auto; }
+}
+
+@media screen and (max-width: 767px) {
+.header-title { padding: 30px 0 40px; }
+.header-title > p { font-size: 16px; margin-bottom: 20px; }
+#about { background-image: url("../images/home-assets/about_bg.jpg"); background-size: cover; min-height: 220px; position: relative; }
+.work-page .swipe-sec-one { position: relative; }
+.upload-sec { height: 50px; }
+.upload-sec div { line-height: 50px; }
+.j-height .panel-body h4 { display: none; }
+.vi-text { margin: 5px 0 20px; }
+.setting-all-tab .tab-menu .panel-body > p { text-align: center; }
+#setting3-collapse .saveBtn { margin: 0; }
+.setting-lable { /*height: auto; line-height: normal; */}
+/*h6 { margin-bottom: 30px; }
+.swip-wrap-parent::after { box-shadow: 0 0 10px 0 rgba(50, 50, 50, 0.3); }
+.swip-wrap-parent::before { bottom: -20px; }*/
+*/

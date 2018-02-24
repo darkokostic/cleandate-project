@@ -1,0 +1,12 @@
+node_modules/
+vendor/
+.vagrant/
+Homestead.yaml
+Homestead.json
+Vagrantfile
+composer.lock
+**.DS_Store
+.idea/
+.env
+/phpMyAdmin
+/storage/

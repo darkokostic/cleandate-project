@@ -1,0 +1,75 @@
+<div class="content-page" >    
+    <div class="content">
+    <div class="">
+        <div class="page-header-title">
+            <h4 class="page-title">Manage FAQs </h4>
+        </div>
+    </div>
+    <div class="page-content-wrapper ">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-body">
+                            <h4 class="m-t-0 m-b-30">Setting</h4>
+                            <form class="form-horizontal" id="setting-form" method="post" name="myForm">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label required" for="Setting_ADMIN_MAIL">Admin Mail <span class="required">*</span></label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" required name="Setting[ADMIN_MAIL]" id="Setting_ADMIN_MAIL" type="text" maxlength="255" ng-model="adminSettings.mail" value="adminSettings.mail"> </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label required" for="Setting_IOS_LINK">Ios Link <span class="required">*</span></label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" required name="Setting[IOS_LINK]" id="Setting_IOS_LINK" type="text" ng-model="adminSettings.ios" value="adminSettings.ios"> </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label required" for="Setting_ANDROID_LINK">Android Link <span class="required">*</span></label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" required name="Setting[ANDROID_LINK]" id="Setting_ANDROID_LINK" type="text" ng-model="adminSettings.android" value="adminSettings.android"> </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label required" for="Setting_FACEBOOK">Facebook <span class="required">*</span></label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" required name="Setting[FACEBOOK]" id="Setting_FACEBOOK" type="text" ng-model="adminSettings.facebook" value="adminSettings.facebook"> </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label required" for="Setting_TWITTER">Twitter <span class="required">*</span></label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" required name="Setting[TWITTER]" id="Setting_TWITTER" type="text" ng-model="adminSettings.twitter" value="adminSettings.twitter"> </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label required" for="Setting_YOUTUBE">Youtube <span class="required">*</span></label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" required name="Setting[YOUTUBE]" id="Setting_YOUTUBE" type="text" ng-model="adminSettings.youtube" value="adminSettings.youtube"> </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label required" for="Setting_GOOGLE">Google <span class="required">*</span></label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" required name="Setting[GOOGLE]" id="Setting_GOOGLE" type="text" ng-model="adminSettings.google" value="adminSettings.google"> </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label required" for="Setting_TUMBLER">Tumbler <span class="required">*</span></label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" required name="Setting[TUMBLER]" id="Setting_TUMBLER" type="text" ng-model="adminSettings.tumbler" value="adminSettings.tumbler"> </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="Setting_CONTACT_CONTENT">Contact Content</label>
+                                    <div class="col-md-10">
+                                        <textarea class="form-control" required name="Setting[CONTACT_CONTENT]" id="Setting_CONTACT_CONTENT" ng-model="adminSettings.content" value="adminSettings.content"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-0">
+                                    <div class="col-sm-offset-2 col-sm-9">
+                                        <input class="btn btn-info" type="submit" name="yt0" value="Save" ng-click="edit(adminSettings)" ng-disabled="myForm.$invalid"> </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer"> © 2017 Apex-Admin - All Rights Reserved. </footer>
+</div>
+</div>

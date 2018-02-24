@@ -1,0 +1,394 @@
+<div class="content-page"  ng-if="userListActive">
+    <div class="content">
+        <div class="">
+            <div class="page-header-title">
+                <h4 class="page-title">Manage Site User</h4></div>
+        </div>
+        <!-- <div class="page-content-wrapper "> -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-body">
+                                <a href="" ng-click="goToAddNewUser()" class="cd-timeline-img cd-primary btn-add-user"><i class="fa fa-plus"></i></a>
+                                <div id="user-grid" class="grid-view" style="overflow: auto;">
+                                    <div class="summary">Displaying {{nextPageUsers.form}}-{{nextPageUsers.to}} of {{nextPageUsers.total}} results.</div>
+                                    
+                                    <table id="userList" class="display items" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Photo</th>
+                                                <th>Name</th>
+                                                <th>Age</th>
+                                                <th>Gender</th>
+                                                <th>Location</th>
+                                                <th>Verifed</th>
+                                                <th>Date</th>
+                                                <th>Login With User</th>
+                                                <th>Status</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="odd" ng-repeat="user in allUsersList">
+                                                <td><img ng-src="{{user.tImage}}" style="height:50px;width:50px;border-radius: 5px;"></td>
+                                                <td>{{user.vFirstName}} {{user.vLastName}}</td>
+                                                <td>{{user.age}}</td>
+                                                <td>{{user.eGender}}</td>
+                                                <td>{{user.city}},{{user.country}}</td>
+                                                <td>{{user.isVerifiedByAdmin}}</td>
+                                                <td>{{formatUserDate(user)  | date:'yyyy-MM-dd'}}</td>
+                                                <td><a class="btn btn-success btn-sm waves-effect" href="api/admin/login/user/{{user.iUserID}}" target="_blank" > Login as user
+                                                    </a></td>
+                                                <td><a class="btn btn-success btn-xs waves-effect" href="">{{user.eStatus}}</a></td>
+                                                <td><a class="btn btn-info btn-xs waves-effect" href="" ng-click="goToSingleViewUser(user.iUserID)"><i class="fa fa-search"></i></a></td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                    
+                                </div>
+                                <script>
+                                $(document).ready(function(e) {
+
+
+
+                                    $(document).on('click', '.btn-ext-login', function(e) {
+
+                                        var loginUrl = "https://www.cleandate.com/site/sociallogin";
+
+                                        var Url = "https://www.cleandate.com/"
+
+                                        e.preventDefault();
+
+                                        e.stopPropagation();
+
+                                        var id = $(this).data('username');
+
+                                        $.ajax({
+
+                                            type: "POST",
+
+                                            url: loginUrl,
+
+                                            data: {
+                                                'LoginForm[username]': id,
+                                                'LoginForm[password]': id
+                                            },
+
+                                            cache: false,
+
+                                            dataType: 'json',
+
+                                            success: function(data) {
+
+                                                if (data.status == true) {
+
+                                                    window.open(Url, '_blank')
+
+                                                } else {
+
+                                                    alert('Oops Failed To Login.')
+
+                                                }
+
+                                            }
+
+                                        });
+
+                                    });
+
+                                    $(document).on('click', '.featured', function() {
+
+                                        var action = $(this).attr('action');
+
+                                        var id = $(this).data('id');
+
+                                        $.ajax({
+
+                                            type: "GET",
+
+                                            url: "/itsadmin/index.php/user/makeFeatured",
+
+                                            data: {
+                                                'id': id,
+                                                'action': action
+                                            },
+
+                                            cache: false,
+
+                                            success: function(data) {
+
+                                                $.fn.yiiGridView.update('user-grid');
+
+                                            }
+
+                                        });
+
+                                    });
+
+                                });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
+    </div>
+</div>
+<!-- NEW PAGE -->
+<div class="content-page" ng-if="addNewUser">
+    <div class="content">
+        <div class="">
+            <div class="page-header-title">
+                <h4 class="page-title">Create User </h4>
+            </div>
+        </div>
+        <div class="page-content-wrapper ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-body">
+                                <h4 class="m-t-0 m-b-30">Add User</h4>
+                                <form class="form-horizontal" name="myForm">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label required">Name <span class="required">*</span></label>
+                                        <div class="col-md-10">
+                                            <input type="text" name="name" ng-model="newUser.name" class="form-control" parsley-type="uname" placeholder="Enter a Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label required">Lastname <span class="required">*</span></label>
+                                        <div class="col-md-10">
+                                            <input type="text" name="lastname" ng-model="newUser.lastname" class="form-control" parsley-type="lastname" placeholder="Enter a Lastname" required> </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label required">Username <span class="required">*</span></label>
+                                        <div class="col-md-10">
+                                            <input type="text" name="uname" ng-model="newUser.username" class="form-control" parsley-type="uname" placeholder="Enter a Username" required> </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label required">Email <span class="required">*</span></label>
+                                        <div class="col-md-10">
+                                            <input type="email" name="email" ng-model="newUser.email" class="form-control" parsley-type="email" placeholder="Enter a Email" required> </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label required">Age <span class="required">*</span></label>
+                                        <div class="col-md-10">
+                                            <input type="number" name="number" ng-model="newUser.age" class="form-control" parsley-type="age" placeholder="Enter a Age" required> </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label required">Sex <span class="required">*</span></label>
+                                        <div class="col-md-10">
+                                            <select class="gender-drop ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="newUser.sex" name="sex" ng-model="user.eGender" required>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div> 
+                                    <div class="form-group m-b-0">
+                                        <div class="col-sm-offset-2 col-sm-9">
+                                            <input class="btn btn-info" type="submit" ng-disabled="myForm.$invalid" ng-click="createNewUser(newUser)" name="yt0" value="Create">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer"> © 2017 Apex-Admin - All Rights Reserved. </footer>
+</div>
+<!-- NEXT PAGE -->
+<div class="content-page" ng-if="singleViewUser">
+    <div class="content">
+<style>
+.img-about{
+    height: 100px;
+    border: 1px solid #FFF;
+    float: left;
+    margin-right: 20px;
+}
+.about-profile-header .page-title {
+    margin-bottom: 12px;
+    color: #ffffff;
+    font-size: 22px;
+    margin-top: -2px !important;
+}
+p.page-p {
+    color: #fff;
+    font-size: 14px;
+    line-height: normal;
+    margin-bottom: 5px;
+}
+.photos-list img {
+    width: 100%;    float: none;
+    border-radius: 6px;
+}
+.match-list img {
+    width: 100%;    float: none;
+    border-radius: 6px;
+}
+
+.match-list a {
+    display: inline-block;
+    margin-bottom: 11px;
+}
+.photos-list a {
+    display: inline-block;
+    margin-bottom: 11px;
+}
+
+.photos-list {
+    height: 530px;
+    overflow-y: auto;
+}
+table.detail-view th {
+    text-align: left !important;
+    width: 160px;
+}
+table.detail-view th, table.detail-view td {
+    font-size: 0.9em;
+    border: 1px white solid;
+    padding: 0.3em 0.6em;
+    vertical-align: top;
+    text-align: justify;
+}
+table.detail-view tr.odd {
+     background: none !important;
+}
+table.detail-view tr.even {
+      background: none !important;
+}
+.match-username {
+    font-size: 14px;
+    max-width: 124px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: 200;
+    margin-bottom: 17px;
+}
+table.detail-view {
+    background: white;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0;
+    height: 530px;
+    overflow-y: auto;
+}
+</style>
+        <div class=""><div class="page-header-title" style="margin-top:6px !important">
+            <div class="about-profile-header clearfix">
+                <a data-lightbox="example-21" href="" class="example-image-link">
+                    <img src="{{singleViewUserData.tImage}}" class="img-about">
+                </a>
+                <h4 class="page-title ">{{singleViewUserData.vFirstName}} {{singleViewUserData.vLastName}}<a href="" ng-click="goBackToList()" class="btn btn-primary pull-right waves-effect waves-light"><i class="fa fa-arrow-left"></i> Back To List</a></h4>
+                <p class="page-p">{{singleViewUserData.eGender}}</p>
+                <p class="page-p">{{singleViewUserData.age}}</p>
+                <p class="page-p">{{singleViewUserData.city}},{{singleViewUserData.country}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="page-content-wrapper ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-body">
+                            <div class="col-md-6">
+                                <h3 class="about-title">General Info</h3>
+                                <table class="detail-view" id="yw0">
+                                    <tbody>
+                                    <tr class="odd">
+                                        <th>ID</th>
+                                        <td>{{singleViewUserData.iUserID}}</td>
+                                    </tr>
+                                    <tr class="even">
+                                        <th>Name</th>
+                                        <td>{{singleViewUserData.vFirstName}} {{singleViewUserData.vLastName}}</td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <th>Display Name</th>
+                                        <td>{{singleViewUserData.vFirstName}} {{singleViewUserData.vLastName}}</td>
+                                    </tr>
+                                    <tr class="even">
+                                        <th>About Me</th>
+                                        <td>{{singleViewUserData.tAbout}}</td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <th>Age</th>
+                                        <td>{{singleViewUserData.age}}</td>
+                                    </tr>
+                                    <tr class="even">
+                                        <th>Email</th>
+                                        <td>{{singleViewUserData.vEmail}}</td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <th>Gender</th>
+                                        <td>{{singleViewUserData.eGender}}</td>
+                                    </tr>
+                                    <tr class="even">
+                                        <th>Intrested In</th>
+                                        <td>{{singleViewUserData.eShowMe}}</td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <th>Username</th>
+                                        <td>{{singleViewUserData.vUserName}}</td>
+                                    </tr>
+                                    <tr class="even">
+                                        <th>Location</th>
+                                        <td>{{singleViewUserData.city}},{{singleViewUserData.country}}</td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <th>Lat</th>
+                                        <td>{{singleViewUserData.dLatitude}}</td>
+                                    </tr>
+                                    <tr class="even">
+                                        <th>Long</th>
+                                        <td>{{singleViewUserData.dLongitude}}</td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <th>Background Verifed</th>
+                                        <td>{{singleViewUserData.isVerifiedByAdmin}}</td>
+                                    </tr>
+                                    <tr class="even">
+                                        <th>Date Of Joining</th>
+                                        <td>{{singleViewUserData.dAddedDateTime | date:'yyyy-MM-dd'}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <hr>
+                                 <h3 class="about-title">Match Users</h3>
+                                <div class="match-list" ng-repeat="user in singleViewMatchesUsers">
+                                    <p>{{user.vFirstName}} {{user.vLastName}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="about-title">Photos</h3>
+                                <div class="photos-list" ng-repeat="image in singleViewUserData.images">
+                                    <a class="public-photo  example-image-link" href="" data-lightbox="example-1">
+                                        <img ng-src="{{image.vImageName}}" alt="image" class="lazy">
+                                    </a>
+                                </div>
+                                <hr>
+                                <h3 class="about-title">User Document <span>For background verification.</span></h3>
+                                    <div class="photos-list">
+                                        <a data-lightbox="example-23" href="" class="parent-img example-image-link">
+                                            <img src="" class="photo-pic">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer"> © 2017 Apex-Admin - All Rights Reserved. </footer>
+    </div>
+</div>

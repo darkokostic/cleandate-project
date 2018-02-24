@@ -1,0 +1,109 @@
+<section class="section-height" ng-if="swipePage2">
+    <div class="profile_top">
+
+    </div>
+    <div class="profile_data">
+        <div class="tab-content ">
+            <div class="tab-pane active" id="swipe">
+                <div class="container">
+                    <div class="swipe_verify_main">
+                        <div class="info_icon_div">
+                            <img src="images/icons/info.png" alt="info"/>
+                        </div>
+                        <h1 class="swipe_verify_title">Before to start swiping  , please verify that you are STD free</h1>
+                        <div class="content_swipe_verify">
+                            <h3>Why do I have to pledge I am STD Free</h3>
+                            <p>cleandate is community of high quality people.Our users take care of their sexual health and
+                            are open to discuss about safe sex.</p>
+                            <p>Join them and enjoy the most interesting clean people around you.</p>
+                        </div>
+                        <div class="btn_verify_clean_div text-center">
+                            <a class="btn_verify_clean btn-shadow" ng-click="goToSwipePage2()">I pledge I am Clean</a>
+                        </div>
+                        <div class="verify_upload_main clearfix">
+                            <div class="col-md-6">
+                  		        <img src="images/icons/doc_verify.png" alt="doc icon" class="img_doc"><p>Veify your profile by uploading<br> your latest Test Result on <span><a href="/#!/user/settings">Setting</a></span></p>
+                            </div>
+                            <div class="col-md-6">
+                      		    <img src="images/icons/verify_doc2.png" alt="doc icon" class="img_doc"><p>Do You need a Test? <br><span><a href="/#!/user/get_profile_verifired">Order CleanDate Collection Kit</span></a></p>
+                            </div>                  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section-height" ng-if="!swipePage2 && !noData" ng-init="init()">
+    <div class="profile_top">
+    </div>
+    <div class="profile_data">
+        <div class="tab-content ">
+            <div class="tab-pane active" id="swipe">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-6 _RES_CENTER_">
+                            <div class="profile-det clearfix swipe-profile">
+                                <h2 class="name-age">
+                                {{swipe.vFirstName}}  
+                                </h2>
+                                <div class=" loacation mile">
+                                {{swipe.city}}-{{swipe.country}}<img src="images/home-assets/map-pink-icon.png"/>
+                                </div>
+                                <div class="verify-profile clearfix mbtp verification-holder" >    
+                                    <span class="date-pledge">
+                                    </span>
+                                    <a href="#" class="verify-clean"><img src="images/icons/right-check.png"
+                                     alt="check"/>Verified Clean</a>
+                                    <span class="date-pledge">
+                                    </span>
+                                </div>
+                                <a data-id="" class="otherprofile view-btn" ng-click="viewProfile(swipe.iUserID)">View Profile</a> 
+                            </div>
+                            <div class="profile-det clearfix swipe-profile">
+                                <h2 class="name-age">{{swipe.age}}</h2>
+                                </div>
+                                <div class="data-row ">
+                                    <label>City</label>
+                                    <span class="val city">{{swipe.city}}</span>
+                                </div>
+                                <div class="data-row ">
+                                    <label>Gender</label>
+                                    <span class="val city">{{swipe.eGender}}</span>
+                                </div>
+                                <div class="data-row ">
+                                    <label>Interested In</label>
+                                    <span class=" intrested val">{{swipe.eShowMe}}</span>
+                                </div>
+                                <div class="data-row ">
+                                    <label>Occupation</label>
+                                    <span class="val aboutme">{{swipe.tSelectedWork}}</span>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-sm-6 text-center _RES_CENTER_">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <img style="max-width: 200px;" ng-src="{{swipe.tImage}}">
+                                    </div>
+                                    <div style="margin-top: 20px;" class="col-xs-6">
+                                        <a ng-click="likeUser(swipe)"><img src="../images/like.png" ></a>
+                                    </div>
+                                    <div style="margin-top: 20px;" class="col-xs-6">
+                                        <a ng-click="dislikeUser(swipe)"><img src="../images/declike.png" ></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<section ng-if="noData">
+
+        <center>
+            <h1 class="verify-text" style="text-align='center'">No more members for you to review</h1>
+        </center>
+
+</section>

@@ -1,0 +1,96 @@
+
+<div class="tab-pane sub-data active" id="messages">
+    <div class="container">
+        <div class="tab-content">
+            <div class="row clearfix">
+            <!-- col-sm-4 _HP0_   chat-left-->
+                <div class="col-xs-12 col-md-4 ">
+                    <div class="overflow " style="height: 607px;">
+                        <form class="chat-search">
+                            <div class="input-holder">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <input type="search" id="filter-contact" ng-model="search_key" placeholder="Search members" ng-change="search(search_key)">
+                                <!--<i class="icon-speech-bubble"></i>-->
+                            </div>
+                        </form>
+                        <ul class="chat-usr-list scroll-pane" style="height: 607px;">
+                            <li class="contact-list _ACTIVE_" ng-repeat="userListd in users " ng-click="selectChat(userListd)">
+                                <span class="img-holder ">
+                                      <img src="{{userListd.tImage}}" alt="">
+                                </span>
+                                <span class="item-name">{{userListd.vFirstName + " " + userListd.vLastName}}<i ng-if="userListd.favorite" class="fa fa-star" aria-hidden="true"></i></span>
+                                <span class="last-msg">
+                                    <div class="new-message" ng-if="userListd.newMSG">
+                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    </div>
+                                </span>
+                                <span class="time"></span>
+                                <span class="contact-msg-count hide "></span>
+                                <!-- contact-msg-count-->
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- col-sm-8 _HP0_ chat-right-->
+                <div class="col-xs-12 col-md-8 ">
+                    <div class="chat-data myconversation _ACTIVE_" id="7055" style="height: 607px;">
+                        <div class="view-pro-row clearfix">
+                            <span class="back-ico"><b>‹</b></span>
+                            <span class="img-holder">
+                                <img src="{{selectedUser.tImage}}" alt="">
+                            </span>
+                            <span class="item-name">{{selectedUser.vFirstName + " " + selectedUser.vLastName}}</span>
+                            <a ng-href="#!/user/view_profile/{{selectedUser.iUserID}}" class="view-btn">View Profile</a>
+                        </div>
+
+                        <div>
+                            <div>
+                                <ul id="scrollDown" style="width: 100%; max-height: 402px; overflow: auto">
+                                    <li id="{{msg.id}}" ng-repeat="msg in messages">
+                                        <div class="row msg_container base_sent" ng-if="msg.user_id == user.iUserID">
+                                            <div class="col-md-10 col-xs-10">
+                                                <div class="messages msg_sent">
+                                                    <p>{{msg.message}}</p>
+                                                    <p >{{ foramtDate(msg.created_at) | timeAgo}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 col-xs-2 avatar">
+                                                <img src="{{msg.sender.tImage}}" class=" img-responsive ">
+                                            </div>
+                                        </div>
+                                        <div class="row msg_container base_receive" ng-if="msg.receiver_id == user.iUserID">
+                                            <div class="col-md-2 col-xs-2 avatar">
+                                                <img src="{{msg.sender.tImage}}" class=" img-responsive ">
+                                            </div>
+                                            <div class="col-md-10 col-xs-10">
+                                                <div class="messages msg_receive">
+                                                    <p>{{msg.message}}</p>
+                                                    <p >{{ foramtDate(msg.created_at) | timeAgo}}</p>
+                                                 </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        
+                        <form class="chat-input-holeder" autocomplete="off" method="post">
+                            <div class="holder-input">
+
+                                <input placeholder="Write a message" type="text" ng-model="msg_for_sending" class="chat-msg-input">
+
+                                <input type="submit" value="Send" ng-click="sendMsg(msg_for_sending,selectedUser.iUserID)">
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

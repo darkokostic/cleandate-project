@@ -1,0 +1,90 @@
+<section id="faq">
+    <div class="overBg"></div>
+    <div class="row">
+        <div class="container clearfix">
+            <div class="col-xs-10 col-md-8">
+                <div class="header-title faqtitle">
+                    <h1>Problems? <span>We are here for you.</span></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="faq-all-tab outer-height clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="tab-menu j-height" style="height: 764px;">
+                    <div class="tab-title">
+                        <h1><img src="images/home-assets/faq-icon.png" class="faq-icon" alt="logo">F.A.Q</h1>
+                    </div>
+                    <nav class="nav-sidebar">
+                        <ul class="nav nav-tabs nav-faq" >
+                            <li class="nav" ng-repeat="category in data">
+                      	        <a href='' data-toggle="tab" ng-click="changeActiveCat(category)">{{category.categoryName}}</a>
+                    	   </li>
+                        </ul>
+                        <div class="panel-group visible-xs" id="BvW2N-accordion"></div>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content tab-content-faq">
+            <!-- <div class="tab-pane fade <?php echo ($i==1)?'in active':"";?>" id="<?php echo $i;?>"> -->
+                    <div class="tab-pane fade in active" id="3" ng-init="changeActiveCat(activeCategory)">
+                        <h4>{{activeCategory.categoryName}}</h4>
+                        <div ng-repeat="cat in activeCategory">
+                            <h3>{{cat.questions}}</h3>
+                            <span class="faq-p">{{cat.answers}}</span>
+                        </div>
+                    </div>
+                    <h1>Didn’t you find what you need?</h1>
+                    <a data-toggle="modal" data-target="#myModal-contact">
+                        <h2>Contact us!</h2>
+                    </a>
+                    <div class="tab-pane fade" id="search-tab"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- MODAL -->
+<div id="myModal-contact" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body model-contact clearfix">
+                <h1 class="modal-title">Contact us</h1>
+                <div class="col-sm-5 text-popu">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                </div>
+                <div class="col-sm-7">
+                    <form class="contact-form form" name="myForm">
+                        <div class="form-group">
+                            <div class="icon-addon addon-lg icon-rl">
+                                <img class="conatct-form" src="images/home-assets/user-icon.png" alt="icon">
+                                <input required ng-model="contactUs.name" type="text" placeholder="Name" class="form-control" name="name" id="name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="icon-addon addon-lg icon-rl">
+                                <img class="conatct-form" src="images/home-assets/email.png" alt="icon">
+                                <input required ng-model="contactUs.email" type="email" placeholder="Email" class="form-control" name="email" id="email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="icon-addon addon-lg icon-textarea">
+                                <textarea required ng-model="contactUs.description" class="form-control" id="msg" placeholder="Your message" name="message" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="Send-btn text-right">
+                            <button ng-click="sendMail(contactUs)" class=" btn-submit-popup send-contact" ng-disabled="myForm.$invalid">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

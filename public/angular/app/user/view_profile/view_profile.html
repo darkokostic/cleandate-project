@@ -1,0 +1,113 @@
+<section class="section-height">
+    <div class="profile_top">
+
+    </div>
+    <div class="tab-pane" ng-init="initSingleMemberView()">
+        <div class="profile-data">
+            <div class="container">
+                <div class="row clearfix pro-top-row">
+                    <div class="col-sm-3 col-md-3">
+                        <div class="profileDiv">
+                            <a class="public-photo example-image-link" href="" data-lightbox="example-234">
+                                <img ng-src="{{dataSingleUserView.tImage}}" alt="image" class="lazy">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-md-9">
+                        <div class="profiledata-div">
+                            <div class="Profile-divtitle">
+                                <h1>
+                                    <span>
+                                        {{dataSingleUserView.vFirstName}} {{dataSingleUserView.vLastName}}
+                                    </span>
+                                </h1>
+                                </span>
+                                </h3>
+                                <div class="Profile-divsub">
+                                    <span>{{dataSingleUserView.age}}</span>
+                                    <span class="sub-point">{{dataSingleUserView.eGender}}</span>
+                                    <span class="sub-point">{{dataSingleUserView.city}},{{dataSingleUserView.country}}</span>
+                                </div>
+                            </div>
+                            <div class="Profile-divbtn">
+                                <a href="" ng-click="makeUserFavorite()" class="fav-btn makeFav" data-id=""><i class="fa fa-star-o" aria-hidden="true"></i>Favorite</a>
+                                <a href="/#!/user/settings" class="settings-link"><i class="fa fa-cog" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="pro-sub-lable">
+                                <div class="lable-one">
+                                    <span>LAST ACTIVITY</span>
+                                    <label>
+                                        {{dataSingleUserView.dUpdatedDateTime | date:'yyyy-MM-dd'}}
+                                    </label>
+                                </div>
+                                <div class="lable-one _MRL_">
+                                    <span>MEMEBER SINCE</span>
+                                    <label>
+                                        {{dataSingleUserView.dAddedDateTime | date:'yyyy-MM-dd'}}
+                                    </label>
+                                </div>
+                                <div class="lable-one">
+                                    <span>RECENT LOCATION</span>
+                                    <label>
+                                        {{dataSingleUserView.city}},{{dataSingleUserView.country}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="profile-bottom">
+                    <div class="container">
+                        <div class="row clearfix ">
+                            <div class="col-sm-6 col-md-4">
+                                <h1 class="user-info-title">Info</h1>
+                                <div class="data-row-profile">
+                                    <label>Name</label>
+                                    <span>{{dataSingleUserView.vFirstName}}</span> 
+                                </div>
+                                <div class="data-row-profile">
+                                    <label>Miles Away</label>
+                                    <span>{{dataSingleUserView.distance|limitTo:6}} Miles</span>
+                                </div>
+                                <div class="data-row-profile">
+                                    <label>Age</label>
+                                    <span>{{dataSingleUserView.age}}</span>
+                                </div>
+                                <div class="data-row-profile">
+                                    <label>Interested In</label>
+                                    <span>{{dataSingleUserView.eShowMe}}</span>
+                                </div>
+                                <div class="data-row-profile">
+                                    <label>City</label>
+                                    <span>{{dataSingleUserView.city}}</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-8">
+                                <div class="clearfix">
+                                    <h1 class="user-info-title">Public Photos</h1>
+                                    <div class="bg_white clearfix">
+                                        <div class="inner-row">
+                                            <div class="col-xs-6 col-sm-3 col-md-3 clearfix public-col" ng-repeat="publicImage in publicImagesUser">
+                                                <a class=" public-photo placeholder example-image-link" href="" data-lightbox="example-1">
+                                                    <img ng-src="{{publicImage.vImageName}}" alt="image" class="lazy">
+                                                </a>
+                                            </div>                                                                                     
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="about-me-profile clearfix">
+                                    <h1 class="user-info-title">About Me</h1>
+                                    <p style="text-align:justify">
+                                        {{dataSingleUserView.tAbout}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
